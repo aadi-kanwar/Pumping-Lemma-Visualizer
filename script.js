@@ -1,35 +1,45 @@
-function visualizePumping() {
-   const inputString = document.getElementById("inputString").value;
-   const pumpingLength = document.getElementById("pumpingLength").value;
-   
-   // Clear previous results
-   document.getElementById("result").innerHTML = "";
-   document.getElementById("pumpedString").innerHTML = "";
+// script.js
 
-   if (!inputString || !pumpingLength) {
-       document.getElementById("result").innerHTML = "Please provide both string and pumping length.";
-       return;
+function checkPumpingLemma() {
+   const s = document.getElementById("inputString").value;
+   const p = parseInt(document.getElementById("pumpingLength").value);
+ 
+   // Validate input length
+   if (!s || isNaN(p) || p < 1) {
+     alert("Please provide valid inputs.");
+     return;
    }
-   
-   const n = inputString.length;
-
-   // Check if string length is less than pumping length
-   if (n < pumpingLength) {
-       document.getElementById("result").innerHTML = "String length is smaller than the pumping length. Cannot apply Pumping Lemma.";
-       return;
+   if (s.length < p) {
+     alert("The string length must be greater than or equal to pumping length.");
+     return;
    }
-
-   // Split the string into three parts: x, y, z
-   let x = inputString.substring(0, pumpingLength);
-   let y = inputString.substring(pumpingLength, pumpingLength + 1); // y is just a single character
-   let z = inputString.substring(pumpingLength + 1);
-
-   // Display original string and split parts
-   document.getElementById("result").innerHTML = `<p>Original String: <span class="highlight">${inputString}</span></p>`;
-   document.getElementById("result").innerHTML += `<p>Split into: x = <span class="highlight">${x}</span>, y = <span class="highlight">${y}</span>, z = <span class="highlight">${z}</span></p>`;
+ 
+   // Split string according to Pumping Lemma rules
+   let x = s.substring(0, p - 1);
+   let y = s.substring(p - 1, p);
+   let z = s.substring(p);
+ 
+   // Display the split result
+   visualizePumpingLemma(x, y, z);
+ }
+ 
+ function visualizePumpingLemma(x, y, z) {
+   document.getElementById("result").innerHTML = `
+     <p>String split as: <strong>x</strong> = ${x}, <strong>y</strong> = ${y}, <strong>z</strong> = ${z}</p>
+     <p>Pumping Lemma: Generate pumped strings using <strong>y</strong> repeats.</p>
+     <button onclick="pumpString('${x}', '${y}', '${z}', 2)">Pump y (i=2)</button>
+     <button onclick="pumpString('${x}', '${y}', '${z}', 3)">Pump y (i=3)</button>
+     <button onclick="pumpString('${x}', '${y}', '${z}', 4)">Pump y (i=4)</button>
+   `;
+ }
+ 
+ function pumpString(x, y, z, i) {
+   // Generate pumped string
+   const pumped = x + y.repeat(i) + z;
    
-   // Apply the pumping process and show results
-   let pumpedString = x + y.repeat(2) + z; // Example: pump 'y' twice
-
-   document.getElementById("pumpedString").innerHTML = `<p>Pumped String: <span class="highlight">${pumpedString}</span></p>`;
-}
+   // Display pumped string result
+   document.getElementById("pumpedString").innerHTML = `
+     <p>Pumped string with <strong>i=${i}</strong>: <span class="highlight">${pumped}</span></p>
+   `;
+ }
+ 
