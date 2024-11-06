@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Pumping Lemma Visualizer</title>
-   <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pumping Lemma Visualizer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-   <div class="container">
-      <h1>Pumping Lemma Visualizer</h1>
-      <div class="form-group">
-         <label for="inputString">Enter a string:</label>
-         <input type="text" id="inputString" placeholder="Enter your string" required>
-      </div>
-      <div class="form-group">
-         <label for="pumpingLength">Enter pumping length (p):</label>
-         <input type="number" id="pumpingLength" min="1" placeholder="e.g., 3" required>
-      </div>
-      <button onclick="checkPumpingLemma()">Check Pumping Lemma</button>
-      <div id="result" class="result"></div>
-      <div id="pumpedString" class="pumped-string"></div>
-   </div>
-   <script src="script.js"></script>
+    <div class="container">
+        <h1>Pumping Lemma Visualizer</h1>
+        <div class="form-group">
+            <label for="inputString">Enter a string:</label>
+            <input type="text" id="inputString" placeholder="e.g., ababab" />
+        </div>
+        <div class="form-group">
+            <label for="stringLength">Length of the string (n):</label>
+            <input type="number" id="stringLength" placeholder="Enter string length" />
+        </div>
+        <button onclick="validateString()">Check String</button>
+        
+        <div class="result" id="result"></div>
+        <div class="pumped-string" id="pumpedString"></div>
+    </div>
+
+    <footer class="footer">
+        © 2024 Pumping Lemma Visualizer Project | All Rights Reserved<br>
+        <a href="https://github.com/aadi-kanwar">Aadi Kanwar</a> | <a href="https://github.com/Purushotham011">Purushotham B</a>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
