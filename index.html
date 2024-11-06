@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Pumping Lemma Visualizer</title>
+   <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div class="container">
+      <h1>Pumping Lemma Visualizer</h1>
+      <div class="form-group">
+         <label for="inputString">Enter a string:</label>
+         <input type="text" id="inputString" placeholder="Enter your string" required>
+      </div>
+      <div class="form-group">
+         <label for="pumpingLength">Enter pumping length (p):</label>
+         <input type="number" id="pumpingLength" min="1" placeholder="e.g., 3" required>
+      </div>
+      <button onclick="checkPumpingLemma()">Check Pumping Lemma</button>
+      <div id="result" class="result"></div>
+      <div id="pumpedString" class="pumped-string"></div>
+   </div>
+   <script src="script.js"></script>
+</body>
+</html>
